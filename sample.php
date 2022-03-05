@@ -39,21 +39,19 @@
                     </thead>
                     <tbody>
 
-                    <?php foreach (completeListings() as $c){ ?>
+                    <?php foreach (tasks() as $c){ ?>
 
                         <tr>
                             <td><?php echo $c['id'] ?></td>
                             <td><?php echo $c['task_name'] ?></td>
                             <td><?php echo day($c['day_id'])['day_name']; ?></td>
                             <td>
-                                <?php
-                                if ($c['status'] == 0){
-                                    echo '<p><a href="statusActive.php?id='.$c['id'].'">enable</a></p>';
-                                }else{
-                                    echo '<p><a class="btn btn-success btn-sm" href="statusDeActive.php?id='.$c['id'].'"><i class="fa fa-check"></i></a></p>';
-                                }
-
-                                ?>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input"
+                                        <?php if ($c['status'] == '1'){echo "checked";} ?>
+                                           onclick="toggleStatus(<?php echo $c['id']; ?>)"
+                                           type="checkbox" role="switch" id="check">
+                                </div>
                             </td>
                             <td><?php echo showTime($c['created_at']); ?></td>
                         </tr>
@@ -70,9 +68,27 @@
 <?php clearError(); ?>
 
 <?php require_once "template/footer.php"; ?>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <script>
     $(".table").dataTable({
         "order": [[1, "asc" ]]
     });
+
+    function toggleStatus(id){
+        var id = id;
+        $.ajax({
+            url : "toggle.php",
+            type : "post",
+            data : {id :id},
+            success : function (result){
+                if (result == '1'){
+                    swal("Done!","status is ON","success");
+                }else{
+                    swal("Done!","status is OFF","success");
+                }
+            }
+        });
+    }
 </script>

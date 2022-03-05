@@ -138,7 +138,7 @@ function register(){
     if (!$errorStatus){
         $sql = "INSERT INTO users (name,email,phone,password) VALUES ('$name','$email','$phone','$sPass')";
         if (runQuery($sql)){
-            redirect("user_list.php");
+            redirect("users");
         }
     }
 
@@ -180,7 +180,7 @@ function login(){
             }else{
                 session_start();
                 $_SESSION['user'] = $row;
-                redirect("listings.php");
+                redirect("listings");
 
             }
         }
@@ -211,29 +211,6 @@ function userDelete($id){
 
 // day start
 
-function addDay(){
-    $errorStatus = 0;
-    $date = "";
-
-    if (empty($_POST['date'])) {
-        setError("date", "Day name is required!");
-        $errorStatus = 1;
-    } else {
-        $date = textFilter(strip_tags($_POST['date']));
-    }
-
-    if (!$errorStatus){
-        $user_id = $_SESSION['user']['id'];
-
-        $sql = "INSERT INTO days (day_name,user_id) VALUES ('$date','$user_id')";
-
-        if(runQuery($sql)){
-            redirect("date.php");
-        }
-    }
-
-}
-
 function day($id){
     $sql = "SELECT * FROM days WHERE id=$id";
     return fetch($sql);
@@ -260,20 +237,14 @@ function createTask(){
             $task = textFilter(strip_tags($_POST['task']));
     }
 
-    if (empty($_POST['date'])) {
-        setError("date", "Day is required!");
-        $errorStatus = 1;
-    } else {
-        $day = textFilter(strip_tags($_POST['date']));
-    }
 
     if (!$errorStatus){
         $user_id = $_SESSION['user']['id'];
 
-        $sql = "INSERT INTO tasks (task_name,day_id,user_id) VALUES ('$task','$day','$user_id')";
+        $sql = "INSERT INTO tasks (task_name,user_id) VALUES ('$task','$user_id')";
 
         if(runQuery($sql)){
-            redirect("create.php");
+            redirect("create");
         }
     }
 
@@ -305,46 +276,19 @@ function taskUpdate(){
             $newTask = textFilter(strip_tags($_POST['task']));
     }
 
-    if (empty($_POST['date'])) {
-        setError("date", "Day is required!");
-        $errorStatus = 1;
-    } else {
-        $newDay = textFilter(strip_tags($_POST['date']));
-    }
-
     if (!$errorStatus){
         $id = $_POST['id'];
-        $sql = "UPDATE tasks SET task_name='$newTask',day_id='$newDay' WHERE id=$id";
+        $sql = "UPDATE tasks SET task_name='$newTask' WHERE id=$id";
 
         if(runQuery($sql)){
-            redirect("create.php");
+            redirect("create");
         }
     }
 }
 
 // task end
 
-// task listing start
-
-function listings(){
-    $sql = "SELECT * FROM tasks WHERE status='0'";
-    return fetchAll($sql);
-}
-
-function completeListings(){
-    $sql = "SELECT * FROM tasks WHERE status='1'";
-    return fetchAll($sql);
-}
-
-function statusActive($id){
-    $sql = "UPDATE tasks SET status ='1' WHERE id=$id";
-    return runQuery($sql);
-}
-
-function statusDeActive($id){
-    $sql = "UPDATE tasks SET status ='0' WHERE id=$id";
-    return runQuery($sql);
-}
+// status start
 
 function resetAll(){
     $sql = "UPDATE tasks SET status ='0'";
@@ -352,4 +296,4 @@ function resetAll(){
 }
 
 
-// task listing end
+// status end

@@ -5,7 +5,7 @@
     <div class="col-12">
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo $url; ?>/index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo $url; ?>/listings">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Create Tasks</li>
             </ol>
         </nav>
@@ -40,18 +40,6 @@
                         <?php if (getError('task')){ ?>
                             <small class="fw-bold text-danger" style="margin-left: 10px;"><?php echo getError('task'); ?></small>
                         <?php }; ?>
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Select Day</label>
-                            <select name="date" class="form-select w-50" id="date">
-                                <option selected disabled>Select Day</option>
-                                <?php foreach (days() as $c){ ?>
-                                    <option value="<?php echo $c['id']; ?>"><?php echo $c['day_name']; ?></option>
-                                <?php } ?>
-                            </select>
-                            <?php if (getError('date')){ ?>
-                                <small class="fw-bold text-danger" style="margin-left: 10px;"><?php echo getError('date'); ?></small>
-                            <?php }; ?>
-                        </div>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary text-uppercase" name="addTask"><i class="fa fa-plus me-2"></i>Add Task</button>
@@ -64,7 +52,6 @@
                     <thead>
                     <th>#</th>
                     <th>Tasks</th>
-                    <th>Day</th>
                     <th>Action</th>
                     <th>Created</th>
                     </thead>
@@ -75,12 +62,11 @@
                         <tr>
                             <td><?php echo $c['id'] ?></td>
                             <td><?php echo $c['task_name'] ?></td>
-                            <td><?php echo day($c['day_id'])['day_name']; ?></td>
                             <td>
                                 <a href="task_delete.php?id=<?php echo $c['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure? You want to delete `<?php echo $c['task_name']; ?>`?')">
                                     <i class="fa fa-trash"></i>
                                 </a>
-                                <a href="task_edit.php?id=<?php echo $c['id']; ?>" class="btn btn-sm btn-outline-warning">
+                                <a href="edit?id=<?php echo $c['id']; ?>" class="btn btn-sm btn-outline-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </td>

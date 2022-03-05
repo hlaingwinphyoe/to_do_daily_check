@@ -8,7 +8,7 @@
             <span class="font-weight-bolder h4 mb-0  text-primary ms-2">Tasks Daily Report</span>
         </div>
         <button class="hide-sidebar-btn btn btn-light d-block d-lg-none">
-            <i class="feather-x text-primary" style="font-size: 2em;"></i>
+            <i class="fa fa-times text-primary" style="font-size: 2em;"></i>
         </button>
     </div>
     <div class="nav-menu">
@@ -20,18 +20,9 @@
             </li>
 
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/complete.php" class="menu-item-link">
+                <a href="<?php echo $url; ?>/listings" class="menu-item-link">
                     <span>
-                        <i class="fas fa-clipboard-check text-primary"></i>
-                        Completed Listings
-                    </span>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="<?php echo $url; ?>/listings.php" class="menu-item-link">
-                    <span>
-                        <i class="fa fa-list text-primary"></i>
+                        <i class="fa fa-clipboard-check text-primary"></i>
                         Tasks Listings
                     </span>
                 </a>
@@ -41,33 +32,20 @@
             <?php if ($_SESSION['user']['role'] ==0){ ?>
 
             <li class="text-black-50 mb-2">
-                <span>Input</span>
+                <span>Setting</span>
             </li>
+
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/create.php" class="menu-item-link">
-                    <span>
-                        <i class="fa fa-plus text-primary"></i>
-                        Create Tasks
-                    </span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?php echo $url; ?>/date.php" class="menu-item-link">
-                    <span>
-                        <i class="fa fa-calendar text-primary"></i>
-                        Days
-                    </span>
+                <a href="<?php echo $url; ?>/create" class="menu-item-link">
+                <span>
+                    <i class="fa fa-plus text-primary"></i>
+                    Create Tasks
+                </span>
                 </a>
             </li>
 
-            <li class="menu-spacer"></li>
-
-            <li class="text-black-50 mb-2">
-                <span>Users Control</span>
-            </li>
-
             <li class="menu-item">
-                <a href="<?php echo $url; ?>/user_list.php" class="menu-item-link">
+                <a href="<?php echo $url; ?>/users" class="menu-item-link">
                     <span>
                         <i class="fa fa-users text-primary"></i>
                         Users

@@ -1,0 +1,9 @@
+RewriteEngine on
+
+#single file
+RewriteRule ^listings$ listings.php [L]
+RewriteRule ^create$ create.php [L]
+RewriteRule ^users$ user_list.php [L]
+RewriteRule ^register$ register.php [L]
+RewriteRule ^login$ index.php [L]
+RewriteRule ^edit$ task_edit.php [L]

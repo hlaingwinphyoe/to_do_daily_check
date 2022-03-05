@@ -13,8 +13,21 @@
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/vendor/datatable/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/style.css">
+    <link rel="manifest" href="<?php echo $url; ?>/manifest.json">
 </head>
 <body>
+
+<script>
+    if("serviceWorker in navigator"){
+        navigator.serviceWorker.register("js/sw.js").then(registration =>{
+            console.log("SW Registered!");
+            console.log(registration);
+        }).catch(error => {
+            console.log("SW Registration Failed!");
+            console.log(error);
+        })
+    }
+</script>
 
 <section class="main container-fluid">
     <div class="row">

@@ -7,5 +7,5 @@ require_once "core/functions.php";
 $id = $_GET['id'];
 
 if (userDelete($id)){
-    header("location:user_list.php");
+    header("location:users");
 }

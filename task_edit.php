@@ -43,18 +43,6 @@
                         <?php if (getError('task')){ ?>
                             <small class="fw-bold text-danger" style="margin-left: 10px;"><?php echo getError('task'); ?></small>
                         <?php }; ?>
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Select Day</label>
-                            <select name="date" class="form-select w-50" id="date">
-                                <option selected disabled>Select Day</option>
-                                <?php foreach (days() as $c){ ?>
-                                    <option value="<?php echo $c['id']; ?>" <?php echo $current['day_id'] == $c['id']? 'selected':''; ?>><?php echo $c['day_name']; ?></option>
-                                <?php } ?>
-                            </select>
-                            <?php if (getError('date')){ ?>
-                                <small class="fw-bold text-danger" style="margin-left: 10px;"><?php echo getError('date'); ?></small>
-                            <?php }; ?>
-                        </div>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary text-uppercase" name="editTask"><i class="fa fa-edit me-2"></i>Edit Task</button>
@@ -67,7 +55,6 @@
                     <thead>
                     <th>#</th>
                     <th>Tasks</th>
-                    <th>Day</th>
                     <th>Action</th>
                     <th>Created</th>
                     </thead>
@@ -78,7 +65,6 @@
                         <tr>
                             <td><?php echo $c['id'] ?></td>
                             <td><?php echo $c['task_name'] ?></td>
-                            <td><?php echo day($c['day_id'])['day_name']; ?></td>
                             <td>
                                 <a href="task_delete.php?id=<?php echo $c['id']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure? You want to delete `<?php echo $c['task_name']; ?>`?')">
                                     <i class="fa fa-trash"></i>

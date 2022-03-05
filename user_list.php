@@ -24,7 +24,7 @@
                         <i class="fa fa-arrow-alt-circle-right"></i>
                     </a>
                 </div>
-                <a href="<?php echo $url; ?>/register.php" class="btn btn-primary mt-3 text-uppercase"><i class="fa fa-plus me-2"></i>Create</a>
+                <a href="<?php echo $url; ?>/register" class="btn btn-primary mt-3 text-uppercase"><i class="fa fa-plus me-2"></i>Create</a>
                 <hr>
 
                 <table class="table table-hover mt-3 mb-0">

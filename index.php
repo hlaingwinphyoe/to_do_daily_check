@@ -15,6 +15,7 @@ require_once "core/functions.php";
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/app.css">
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $url; ?>/manifest.json">
 </head>
 <body style="background: var(--bs-light)">
 
@@ -75,6 +76,7 @@ require_once "core/functions.php";
         </div>
     </div>
 </div>
+
 
 <?php clearError(); ?>
 
