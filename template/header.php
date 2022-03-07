@@ -57,7 +57,7 @@
                         <button class="show-sidebar-btn btn btn-primary d-block d-lg-none">
                             <i class="fa fa-list text-light" style="font-size: 2em;"></i>
                         </button>
-                        <p style="font-size: 1.5rem;" class="text-white mb-0">550 MCH MDY</p>
+                        <p style="font-size: 1.5rem;" class="text-white mb-0">To Do Lists</p>
                         <div class="dropdown">
                             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="<?php echo $url; ?>/assets/img/<?php echo $_SESSION['user']['photo'] ?>" class="user-img shadow-sm" alt="">
