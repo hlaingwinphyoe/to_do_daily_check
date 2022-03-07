@@ -4,11 +4,6 @@ function con(){
     return mysqli_connect("localhost","root","","550tasks");
 }
 
-$info = array(
-  "name" => "550 MCH Daily Tasks",
-  "short" => "550 MCH",
-  "description" => "Tasks",
-);
 
 
 $role = ['Admin','User'];
